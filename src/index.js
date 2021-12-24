@@ -1,14 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import LandingPage from "./pages/LandingPage";
+import { HashRouter, Route, Routes } from "react-router-dom";
+import SingleAsset from "./pages/SingleAsset";
+import Header from "./components/molecules/Header";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Header />
+    <HashRouter>
+      <Routes>
+        <Route exact path="/item/:id" element={<SingleAsset />} />
+        <Route exact path="/" element={<LandingPage />} />
+      </Routes>
+    </HashRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
