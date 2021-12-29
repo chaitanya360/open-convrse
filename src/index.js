@@ -2,20 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import LandingPage from "./pages/LandingPage";
-import { HashRouter, Route, Routes } from "react-router-dom";
-import SingleAsset from "./pages/SingleAsset";
-import Header from "./components/molecules/Header";
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <HashRouter>
-      <Routes>
-        <Route exact path="/item/:id" element={<SingleAsset />} />
-        <Route exact path="/" element={<LandingPage />} />
-      </Routes>
-    </HashRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

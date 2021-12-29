@@ -15,6 +15,7 @@ export const CardStyle = styled.div`
 
   .card-title {
     font-size: 1.3rem;
+    margin-left: 0;
   }
 
   .price {
@@ -40,7 +41,7 @@ export const HeaderStyle = styled.header`
   color: #1f5c98;
   font-size: 2rem;
   font-weight: 700;
-  width: 100vw;
+  width: 100%;
   text-align: center;
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
   padding: 0.5rem;

@@ -1,19 +1,36 @@
-import React from "react";
-import Card from "../components/Card";
+import React, { useContext, useEffect, useState } from "react";
+import AssetCard from "../components/molecules/AssetCard";
+import { ContractContext } from "../context/ContractContext";
+import { getEachToken, getTokens } from "../utils/functions/contract-functions";
+
 import { LandingPageStyle } from "./pages.style";
 
 function LandingPage(props) {
+  const [assets, setAssets] = useState([]);
+  const { contract } = useContext(ContractContext);
+
+  async function fetchAndStoreAssets() {
+    getEachToken(contract, (token) => {
+      setAssets((old) => [...old, token]);
+    });
+  }
+
+  useEffect(() => {
+    if (contract) {
+      fetchAndStoreAssets();
+    }
+  }, [contract]);
+
   return (
     <LandingPageStyle>
-      <Card src="1" />
-      <Card src="2" />
-      <Card src="3" />
-      <Card src="4" />
-      <Card src="1" />
-      <Card src="2" />
-      <Card src="3" />
-      <Card src="5" />
-      <Card src="4" />
+      {assets.map((asset) => (
+        <AssetCard
+          key={asset.id}
+          id={asset.id}
+          cost={asset.cost}
+          url={asset.asset_url}
+        />
+      ))}
     </LandingPageStyle>
   );
 }
