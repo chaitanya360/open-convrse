@@ -61,7 +61,7 @@ export async function transferFrom(contract, tokenId, owner) {
   return await contract.methods
     .transferFrom(owner, window.account, tokenId)
     .send({ from: window.account })
-    .then((e) => console.log("asset buy succeed!"));
+    .then((e) => window.location.reload());
 }
 
 // rough
