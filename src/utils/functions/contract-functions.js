@@ -8,7 +8,10 @@ export async function fetchContract() {
 
 export const getTokenInfo = async (tokenId, contract) => {
   console.log("fetching token info..." + tokenId);
-  return await contract.methods.getTokenInfo(tokenId).call();
+  let token = await contract.methods.getTokenInfo(tokenId).call();
+  let owner = await getTokenOwner(contract, tokenId);
+  token = { ...token, id: tokenId, owner };
+  return token;
 };
 
 export async function getTokens(contract) {
@@ -22,11 +25,14 @@ export async function getTokens(contract) {
   return tokens;
 }
 
+export async function getTokenOwner(contract, tokenId) {
+  return await contract.methods.ownerOf(tokenId).call();
+}
+
 export async function getEachToken(contract, callback) {
   let totalSupply = await contract.methods.totalSupply().call();
   for (let i = 1; i < totalSupply; i++) {
     let token = await getTokenInfo(i, contract);
-    token = { ...token, id: i };
     callback(token);
   }
 }

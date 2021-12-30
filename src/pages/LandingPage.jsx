@@ -18,6 +18,7 @@ function LandingPage(props) {
   useEffect(() => {
     if (contract) {
       fetchAndStoreAssets();
+      console.log(contract);
     }
   }, [contract]);
 

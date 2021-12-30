@@ -50,7 +50,9 @@ function SingleAsset() {
   const [asset, setAsset] = useState(null);
 
   async function fetchAndSetAsset() {
-    getTokenInfo(assetId, contract).then((e) => setAsset(e));
+    let token = await getTokenInfo(assetId, contract);
+    console.log(token);
+    setAsset(token);
   }
 
   useEffect(() => {
@@ -78,7 +80,8 @@ function SingleAsset() {
               </h3>
               <button className="btn btn-success">Buy Now</button>
               <button className="btn btn-info">Make offer</button>
-              <h5>Asset {assetId}</h5>
+              <h5>Owner</h5>
+              <span className="m-3">{asset.owner}</span>
             </CardStyle>
             <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
               <span>Description</span>
@@ -92,8 +95,6 @@ function SingleAsset() {
                 doloremque. Accusamus quasi minus accusantium ratione. Lorem
                 ipsum dolor sit amet consectetur adipisicing elit. Recusandae
                 accusantium facere harum porro alias ad. Sed beatae reiciendis
-                laboriosam at dignissimos. Nesciunt voluptate eos perspiciatis
-                velit minima, minus quam quasi.
               </p>
             </CardStyle>
           </div>
