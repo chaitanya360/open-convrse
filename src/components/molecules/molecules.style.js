@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-  max-width: 300px;
+  max-width: 500px;
   box-shadow: 0px 0px 3px grey;
   margin: 1rem;
   padding: 1rem;
@@ -11,6 +11,11 @@ export const CardStyle = styled.div`
   :hover {
     box-shadow: 0px 0px 8px grey;
     transform: translateY(-5px);
+  }
+
+  .model-viewer {
+    width: 100%;
+    height: 400px;
   }
 
   .card-title {
@@ -34,6 +39,16 @@ export const CardStyle = styled.div`
   }
   h5 {
     margin: 1rem;
+  }
+
+  .you-own {
+    display: block;
+    background-color: green;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    transform: translateY(10px);
   }
 `;
 

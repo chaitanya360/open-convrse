@@ -4,6 +4,6 @@ export const LandingPageStyle = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding-top: 1rem;
 `;

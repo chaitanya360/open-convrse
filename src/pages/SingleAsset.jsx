@@ -5,6 +5,7 @@ import { ContractContext } from "../context/ContractContext";
 import {
   fetchContract,
   getTokenInfo,
+  transferFrom,
 } from "../utils/functions/contract-functions";
 
 const SVG = () => (
@@ -48,10 +49,15 @@ function SingleAsset() {
   const assetId = params.id;
   const { contract } = useContext(ContractContext);
   const [asset, setAsset] = useState(null);
+  const [isOwner, setIsOwner] = useState(false);
+
+  async function buyAsset() {
+    transferFrom(contract, assetId, asset.owner);
+  }
 
   async function fetchAndSetAsset() {
     let token = await getTokenInfo(assetId, contract);
-    console.log(token);
+    if (token.owner === window.account) setIsOwner(true);
     setAsset(token);
   }
 
@@ -67,7 +73,18 @@ function SingleAsset() {
         <>
           <CardStyle style={{ minWidth: "500px" }}>
             <h5>Asset {assetId}</h5>
-            <img src={asset.asset_url} className="card-img-top" alt="..."></img>
+            <iframe
+              title="Postwar City - Exterior Scene 3D model - Sketchfab"
+              className="model-viewer"
+              src={asset.asset_url}
+              id="api-frame"
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              xr-spatial-tracking="true"
+              execution-while-out-of-viewport="true"
+              execution-while-not-rendered="true"
+              web-share="true"
+              allowFullScreen=""
+            ></iframe>
           </CardStyle>
           <div>
             <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
@@ -78,10 +95,17 @@ function SingleAsset() {
                   {asset.cost} (${asset.cost * 3.34} )
                 </span>
               </h3>
-              <button className="btn btn-success">Buy Now</button>
-              <button className="btn btn-info">Make offer</button>
-              <h5>Owner</h5>
-              <span className="m-3">{asset.owner}</span>
+              {isOwner ? (
+                <span className="you-own">You are The Owner of This Asset</span>
+              ) : (
+                <>
+                  <button className="btn btn-success" onClick={buyAsset}>
+                    Buy Now
+                  </button>
+                  <h5>Owner</h5>
+                  <span className="m-3">{asset.owner}</span>
+                </>
+              )}
             </CardStyle>
             <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
               <span>Description</span>
