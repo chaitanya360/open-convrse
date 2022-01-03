@@ -14,8 +14,14 @@ function WalletAddress(props) {
 
   return (
     <WalletAddressStyle>
-      Your Wallet Address
-      <div className="address">{address}</div>
+      {address ? (
+        <div>
+          <span>Your Wallet Address : </span>
+          <span className="address">{address}</span>
+        </div>
+      ) : (
+        <div className="address">Not Connected to Wallet</div>
+      )}
     </WalletAddressStyle>
   );
 }

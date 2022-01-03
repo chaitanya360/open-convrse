@@ -9,7 +9,7 @@ function AssetCard({ url, id, cost, owner }) {
   const { contract } = useContext(ContractContext);
 
   async function buyAsset() {
-    transferFrom(contract, id, owner);
+    transferFrom(contract, id, owner, cost);
   }
 
   async function checkOwner() {

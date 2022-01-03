@@ -3,7 +3,7 @@ import { abi, address } from "../data/contract-data";
 export async function connectToMetaMask() {
   if (window.ethereum) {
     console.log("ethe wallet connect request send to browser");
-    await window.ethereum.send("eth_requestAccounts");
+    window.ethereum.send("eth_requestAccounts");
     console.log("ethe wallet request granded");
     let web3 = new window.Web3(window.ethereum);
     console.log("web3 object is created");
@@ -56,13 +56,26 @@ export async function getEachToken(contract, callback) {
   }
 }
 
-export async function transferFrom(contract, tokenId, owner) {
-  console.log("initiated transfer from: ", owner, " for ", tokenId);
+export async function transferFrom(contract, tokenId, owner, cost) {
+  console.log(
+    "initiated transfer from: ",
+    owner,
+    " token id: ",
+    tokenId,
+    " for ether : ",
+    cost
+  );
   return await contract.methods
-    .transferFrom(owner, window.account, tokenId)
-    .send({ from: window.account })
-    .then((e) => window.location.reload());
+    .safeTransfer(owner, window.account, tokenId)
+    .send({
+      from: window.account,
+      value: cost,
+    })
+    .then((e) => window.location.reload())
+    .catch((e) => console.log("error", e));
 }
+
+export async function transferFromToNew(contract, tokenId, owner) {}
 
 // rough
 

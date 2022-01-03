@@ -5,6 +5,7 @@ import {
   getEachToken,
   getTokens,
   transferFrom,
+  transferFromToNew,
 } from "../utils/functions/contract-functions";
 
 import { LandingPageStyle } from "./pages.style";

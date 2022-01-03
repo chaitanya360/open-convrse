@@ -6,6 +6,7 @@ import {
   fetchContract,
   getTokenInfo,
   transferFrom,
+  transferFromToNew,
 } from "../utils/functions/contract-functions";
 
 const SVG = () => (
@@ -52,7 +53,7 @@ function SingleAsset() {
   const [isOwner, setIsOwner] = useState(false);
 
   async function buyAsset() {
-    transferFrom(contract, assetId, asset.owner);
+    transferFrom(contract, assetId, asset.owner, "400000000000000");
   }
 
   async function fetchAndSetAsset() {
@@ -92,7 +93,8 @@ function SingleAsset() {
               <h3 className="price">
                 <SVG />
                 <span>
-                  {asset.cost} (${asset.cost * 3.34} )
+                  {asset.cost / 1000000000000000000} ($
+                  {((asset.cost / 1000000000000000000) * 404554).toFixed(2)} )
                 </span>
               </h3>
               {isOwner ? (
