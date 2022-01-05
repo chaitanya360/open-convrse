@@ -43,21 +43,31 @@ function AssetCard({ url, id, cost, owner }) {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum
             labore corporis suscipit quidem?
           </p>
-          <button href="#" className="btn btn-primary">
-            View
-          </button>
-
-          {isOwner ? (
-            <span className="you-own">You Own This Asset</span>
-          ) : (
-            <>
-              <button className="btn btn-success" onClick={buyAsset}>
-                Buy Now
-              </button>
-              <h5>Owner</h5>
-              <span className="m-3">{owner}</span>
-            </>
-          )}
+          <div className="btn-container">
+            {isOwner ? (
+              <>
+                <button href="#" className="btn btn-primary">
+                  View
+                </button>
+                <span className="you-own">You Own This Asset</span>
+              </>
+            ) : (
+              <div className="buy-container">
+                <button href="#" className="btn btn-primary">
+                  View
+                </button>
+                <button className="btn btn-success" onClick={buyAsset}>
+                  Buy Now
+                </button>
+                <div style={{ marginTop: "10px" }}>
+                  <span className="m-3">Owner : </span>
+                  <span className="m-2" title={owner}>
+                    {owner.substr(0, owner.length / 2) + "..."}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </CardStyle>
     </Link>

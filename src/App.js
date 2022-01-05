@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import { Appstyle } from "./App.style";
 import WalletAddress from "./components/atoms/WalletAddress";
 import Header from "./components/molecules/Header";
 import { ContractContext } from "./context/ContractContext";
@@ -22,16 +23,18 @@ function App(props) {
   }, []);
 
   return (
-    <ContractContext.Provider value={{ contract }}>
-      <Header />
-      <WalletAddress />
-      <HashRouter>
-        <Routes>
-          <Route exact path="/item/:id" element={<SingleAsset />} />
-          <Route exact path="/" element={<LandingPage />} />
-        </Routes>
-      </HashRouter>
-    </ContractContext.Provider>
+    <Appstyle>
+      <ContractContext.Provider value={{ contract }}>
+        <Header />
+        <HashRouter>
+          <Routes>
+            <Route exact path="/item/:id" element={<SingleAsset />} />
+            <Route exact path="/" element={<LandingPage />} />
+          </Routes>
+        </HashRouter>
+        <WalletAddress />
+      </ContractContext.Provider>
+    </Appstyle>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loading from "../components/atoms/Loading";
 import { CardStyle } from "../components/molecules/molecules.style";
 import { ContractContext } from "../context/ContractContext";
 import {
@@ -51,6 +52,7 @@ function SingleAsset() {
   const { contract } = useContext(ContractContext);
   const [asset, setAsset] = useState(null);
   const [isOwner, setIsOwner] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function buyAsset() {
     transferFrom(contract, assetId, asset.owner, "400000000000000");
@@ -60,6 +62,7 @@ function SingleAsset() {
     let token = await getTokenInfo(assetId, contract);
     if (token.owner === window.account) setIsOwner(true);
     setAsset(token);
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -70,61 +73,68 @@ function SingleAsset() {
 
   return (
     <div style={{ display: "flex" }}>
-      {asset && (
-        <>
-          <CardStyle style={{ minWidth: "500px" }}>
-            <h5>Asset {assetId}</h5>
-            <iframe
-              title="Postwar City - Exterior Scene 3D model - Sketchfab"
-              className="model-viewer"
-              src={asset.asset_url}
-              id="api-frame"
-              allow="autoplay; fullscreen; xr-spatial-tracking"
-              xr-spatial-tracking="true"
-              execution-while-out-of-viewport="true"
-              execution-while-not-rendered="true"
-              web-share="true"
-              allowFullScreen=""
-            ></iframe>
-          </CardStyle>
-          <div>
-            <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
-              <span>Highest offer</span>
-              <h3 className="price">
-                <SVG />
-                <span>
-                  {asset.cost / 1000000000000000000} ($
-                  {((asset.cost / 1000000000000000000) * 404554).toFixed(2)} )
-                </span>
-              </h3>
-              {isOwner ? (
-                <span className="you-own">You are The Owner of This Asset</span>
-              ) : (
-                <>
-                  <button className="btn btn-success" onClick={buyAsset}>
-                    Buy Now
-                  </button>
-                  <h5>Owner</h5>
-                  <span className="m-3">{asset.owner}</span>
-                </>
-              )}
+      {loading ? (
+        <Loading />
+      ) : (
+        asset && (
+          <>
+            <CardStyle style={{ minWidth: "500px" }}>
+              <h5>Asset {assetId}</h5>
+              <iframe
+                title="Postwar City - Exterior Scene 3D model - Sketchfab"
+                className="model-viewer"
+                src={asset.asset_url}
+                id="api-frame"
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                xr-spatial-tracking="true"
+                execution-while-out-of-viewport="true"
+                execution-while-not-rendered="true"
+                web-share="true"
+                allowFullScreen=""
+              ></iframe>
             </CardStyle>
-            <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
-              <span>Description</span>
-              <h3 className="price">
-                <span>Asset {assetId}</span>
-              </h3>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod
-                magnam officia, quisquam perspiciatis dignissimos facilis itaque
-                eveniet temporibus dicta quibusdam nostrum rem saepe provident
-                doloremque. Accusamus quasi minus accusantium ratione. Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                accusantium facere harum porro alias ad. Sed beatae reiciendis
-              </p>
-            </CardStyle>
-          </div>
-        </>
+            <div>
+              <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
+                <div className="title">Highest offer</div>
+                <h3 className="price">
+                  <SVG />
+                  <span>
+                    {asset.cost / 1000000000000000000} ($
+                    {((asset.cost / 1000000000000000000) * 404554).toFixed(2)} )
+                  </span>
+                </h3>
+                {isOwner ? (
+                  <span className="you-own">
+                    You are The Owner of This Asset
+                  </span>
+                ) : (
+                  <>
+                    <button className="btn btn-success" onClick={buyAsset}>
+                      Buy Now
+                    </button>
+                    <h5>Owner</h5>
+                    <span className="m-3">{asset.owner}</span>
+                  </>
+                )}
+              </CardStyle>
+              <CardStyle style={{ minWidth: "500px", height: "fit-content" }}>
+                <div className="title">Description</div>
+                <h3 className="price">
+                  <span>Asset {assetId}</span>
+                </h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod
+                  magnam officia, quisquam perspiciatis dignissimos facilis
+                  itaque eveniet temporibus dicta quibusdam nostrum rem saepe
+                  provident doloremque. Accusamus quasi minus accusantium
+                  ratione. Lorem ipsum dolor sit amet consectetur adipisicing
+                  elit. Recusandae accusantium facere harum porro alias ad. Sed
+                  beatae reiciendis
+                </p>
+              </CardStyle>
+            </div>
+          </>
+        )
       )}
     </div>
   );
