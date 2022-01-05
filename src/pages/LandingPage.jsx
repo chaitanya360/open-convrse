@@ -42,6 +42,7 @@ function LandingPage(props) {
             cost={asset.cost}
             owner={asset.owner}
             url={asset.asset_url}
+            style={{ maxWidth: "400px" }}
           />
         ))
       )}

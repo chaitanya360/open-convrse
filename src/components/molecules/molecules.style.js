@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-  max-width: 400px;
   box-shadow: 0px 0px 3px grey;
   margin: 1rem;
   padding: 1rem;
@@ -19,10 +18,10 @@ export const CardStyle = styled.div`
   color: navy;
   cursor: pointer;
 
-  :hover {
+  /* :hover {
     box-shadow: 0px 0px 8px grey;
     transform: translateY(-5px);
-  }
+  } */
 
   .model-viewer {
     width: 100%;
@@ -91,6 +90,15 @@ export const CardStyle = styled.div`
     color: green;
     font-weight: 400;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 90vw;
+    overflow: auto;
+    .model-viewer {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 export const HeaderStyle = styled.header`
@@ -104,4 +112,60 @@ export const HeaderStyle = styled.header`
   text-align: center;
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
   padding: 0.5rem;
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.7rem;
+  }
+`;
+
+export const ConnectWalletStyle = styled.aside`
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .panel {
+    border-radius: 3px;
+    background-color: white;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    transition: all 400ms linear;
+    position: absolute;
+    top: 2rem;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+
+    .title {
+      padding: 1rem;
+    }
+    .card {
+      color: black;
+      text-decoration: none;
+      margin: 1rem 0;
+      padding: 1rem;
+      display: flex;
+      flex-direction: row;
+      font-size: 1.3rem;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      align-items: center;
+      transform: scale(1);
+      img {
+        width: 40px;
+        height: auto;
+        margin-right: 1rem;
+      }
+      :hover {
+        box-shadow: 1px 1px 2px rgba(0, 0, 255, 0.8);
+        transition: all 200ms;
+        transform: scale(1.03);
+      }
+    }
+  }
 `;

@@ -4,7 +4,7 @@ export const WalletAddressStyle = styled.div`
   padding: 0.5rem 1rem;
   background-color: #5555554d;
   font-size: 1rem;
-  color: #ccc2b1;
+  color: wheat;
   .address {
     color: #945afa;
   }
@@ -13,20 +13,21 @@ export const WalletAddressStyle = styled.div`
 export const LoadingStyle = styled.div`
   width: 100%;
   display: flex;
-  padding: 5rem;
-  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
   .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
     margin: auto;
-    display: block;
-    width: 320px;
-    height: 320px;
   }
   .lds-dual-ring:after {
     content: " ";
     display: block;
-    width: 256px;
-    height: 256px;
-    margin: 24px;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
     border-radius: 50%;
     border: 6px solid #fff;
     border-color: #fff transparent #fff transparent;

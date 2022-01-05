@@ -4,7 +4,7 @@ import { ContractContext } from "../../context/ContractContext";
 import { transferFrom } from "../../utils/functions/contract-functions";
 import { CardStyle } from "./molecules.style";
 
-function AssetCard({ url, id, cost, owner }) {
+function AssetCard({ url, id, cost, owner, style }) {
   const [isOwner, setIsOwner] = useState(false);
   const { contract } = useContext(ContractContext);
 
@@ -24,7 +24,7 @@ function AssetCard({ url, id, cost, owner }) {
 
   return (
     <Link to={`/item/${id}`} style={{ textDecoration: "none", color: "black" }}>
-      <CardStyle>
+      <CardStyle style={style}>
         <iframe
           title="Postwar City - Exterior Scene 3D model - Sketchfab"
           className="model-viewer"
