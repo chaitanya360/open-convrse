@@ -66,7 +66,7 @@ function SingleAsset() {
 
   async function buyAsset() {
     if (window.connectedToMetaMask)
-      await transferFrom(contract, assetId, asset.owner, "400000000000000");
+      await transferFrom(contract, assetId, asset.owner, asset.cost);
     else if (window.ethereum)
       await connectToWallet()
         .then(async (e) => {
@@ -76,7 +76,7 @@ function SingleAsset() {
           console.log("ethereum accounts fetched");
           window.account = window.eth_accounts[0];
           console.log("current account ", window.account);
-          transferFrom(contract, assetId, asset.owner, "400000000000000");
+          transferFrom(contract, assetId, asset.owner, asset.cost);
         })
         .catch((e) => {
           console.log("not conncted ");
