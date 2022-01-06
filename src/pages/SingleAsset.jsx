@@ -14,9 +14,24 @@ import {
 import { SingleAssetPageStyle } from "./pages.style";
 
 const tourUrls = {
-  1: "https://kuula.co/share/collection/7qYhb?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1",
-  2: "https://kuula.co/share/collection/7qYhs?logo=0&info=1&fs=1&vr=0&sd=1&thumbs=1",
-  3: "https://kuula.co/share/collection/7qYhQ?logo=0&info=1&fs=1&vr=0&sd=1&thumbs=1",
+  1: "https://kuula.co/share/collection/7qYhQ?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+  2: "https://kuula.co/share/collection/7qYhs?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+  3: "https://kuula.co/share/collection/7qYhb?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+};
+
+const assets = {
+  1: {
+    name: "Post War City",
+    desc: "A city ruin environment suited to build battle games and experiences. Constructed with a low a poly method with light textures.",
+  },
+  2: {
+    name: "Martial Art House",
+    desc: "A battle ready martial art house made with original chinese bamboo. The space not only offers real like environment to train and battle but can be exported to any Web GL based program as it offers a low poly count with baked texture data.",
+  },
+  3: {
+    name: "Cathedral",
+    desc: "An old cathedral environment suited for RPG and Fantasy experiences. It has defined entries and exits and hidden spaces which can be utilised applying one’s creativity.",
+  },
 };
 
 const SVG = () => (
@@ -121,7 +136,7 @@ function SingleAsset() {
                     flexDirection: "column",
                   }}
                 >
-                  <h5>Asset {assetId} - Model</h5>
+                  <h5> {assets[assetId].name} - Model</h5>
                   <iframe
                     title="Postwar City - Exterior Scene 3D model - Sketchfab"
                     className="model-viewer single"
@@ -138,10 +153,11 @@ function SingleAsset() {
 
                 <div>
                   <CardStyle style={{ height: "fit-content" }}>
-                    <div className="title">Highest offer</div>
+                    <div className="title">Current Price</div>
                     <h3 className="price">
                       <SVG />
-                      <span>
+                      Eth
+                      <span style={{ marginLeft: "1rem" }}>
                         {asset.cost / 1000000000000000000} ($
                         {((asset.cost / 1000000000000000000) * 404554).toFixed(
                           2
@@ -178,17 +194,9 @@ function SingleAsset() {
                   <CardStyle style={{ height: "fit-content" }}>
                     <div className="title">Description</div>
                     <h3 className="price">
-                      <span>Asset {assetId}</span>
+                      <span> {assets[assetId].name}</span>
                     </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Quod magnam officia, quisquam perspiciatis dignissimos
-                      facilis itaque eveniet temporibus dicta quibusdam nostrum
-                      rem saepe provident doloremque. Accusamus quasi minus
-                      accusantium ratione. Lorem ipsum dolor sit amet
-                      consectetur adipisicing elit. Recusandae accusantium
-                      facere harum porro alias ad. Sed beatae reiciendis
-                    </p>
+                    <p>{assets[assetId].desc}</p>
                   </CardStyle>
                 </div>
               </div>
@@ -202,13 +210,13 @@ function SingleAsset() {
               >
                 <h5>Virtual Tour</h5>
                 <iframe
-                  width="98%"
-                  height="auto"
+                  width="100%"
+                  height="640"
                   style={{
-                    width: "98%",
-                    height: "80vh",
+                    width: "100%",
+                    height: "640px",
                     border: "none",
-                    margin: "auto",
+                    maxWidth: " 100%",
                   }}
                   frameBorder="0"
                   allowFullScreen

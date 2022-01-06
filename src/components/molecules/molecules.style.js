@@ -109,9 +109,21 @@ export const HeaderStyle = styled.header`
   font-size: 2.2rem;
   font-weight: 700;
   width: 100%;
-  text-align: center;
   box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
   padding: 0.5rem;
+  display: flex;
+
+  .converse-logo {
+    width: 60px;
+    height: auto;
+    margin-left: 1rem;
+  }
+
+  .title {
+    width: 100%;
+    text-align: center;
+    margin-left: -2rem;
+  }
 
   @media screen and (max-width: 480px) {
     font-size: 1.7rem;

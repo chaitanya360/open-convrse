@@ -28,8 +28,8 @@ function App(props) {
         <Header />
         <HashRouter>
           <Routes>
-            <Route exact path="/item/:id" element={<SingleAsset />} />
             <Route exact path="/" element={<LandingPage />} />
+            <Route exact path="/item/:id" element={<SingleAsset />} />
           </Routes>
         </HashRouter>
         <WalletAddress />
