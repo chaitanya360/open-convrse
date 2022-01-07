@@ -102,9 +102,10 @@ export const CardStyle = styled.div`
 `;
 
 export const HeaderStyle = styled.header`
-  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  color: white;
   font-family: "Orbitron", sans-serif;
   font-size: 2.2rem;
   font-weight: 700;

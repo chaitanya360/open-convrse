@@ -8,7 +8,7 @@ function Header(props) {
         className="converse-logo"
         src={`${process.env.PUBLIC_URL}/logo512.png`}
       />
-      <div className="title">NFT Marketspace</div>
+      <div className="title">Marketspace</div>
     </HeaderStyle>
   );
 }
