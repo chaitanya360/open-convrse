@@ -5,20 +5,22 @@ import { HeaderStyle } from "./molecules.style";
 function Header(props) {
   return (
     <HeaderStyle>
-      <div className="left">
+      <div className="left" style={{ width: "100%" }}>
         <div className="logo-wrapper">
           <img src={`${process.env.PUBLIC_URL}/icons/convrse.svg`} />
         </div>
-        <div className="title">Marketspace</div>
-        <div className="desc">
+        <div className="title" style={{ width: "100", textAlign: "center" }}>
+          Marketspace
+        </div>
+        {/* <div className="desc">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
           aliquid commodi aperiam perferendis dolorum necessitatibus est
           delectus quod sunt facilis.
-        </div>
+        </div> */}
       </div>
-      <div className="right">
+      {/* <div className="right">
         <Icon name="user" />
-      </div>
+      </div> */}
     </HeaderStyle>
   );
 }

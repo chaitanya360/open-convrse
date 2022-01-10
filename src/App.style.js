@@ -9,7 +9,8 @@ export const Appstyle = styled.section`
 
   .body {
     /* space for sidebar */
-    padding-left: 100px;
+    padding-left: 0px;
+    /* padding-left: 100px; */
   }
 
   @media screen and (max-width: 640px) {

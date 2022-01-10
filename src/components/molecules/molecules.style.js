@@ -248,6 +248,8 @@ export const ConnectWalletStyle = styled.aside`
 `;
 
 export const SidebarStyle = styled.aside`
+  display: none;
+  /* display: flex; */
   @media screen and (max-width: 640px) {
     display: none;
   }
@@ -256,7 +258,6 @@ export const SidebarStyle = styled.aside`
   width: 100px;
   background-color: #261e35;
   position: fixed;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
