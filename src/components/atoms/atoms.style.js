@@ -42,3 +42,23 @@ export const LoadingStyle = styled.div`
     }
   }
 `;
+
+export const IconStyle = styled.span`
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: all 100ms linear;
+  cursor: pointer;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  :hover {
+    transform: scale(1.4);
+  }
+`;

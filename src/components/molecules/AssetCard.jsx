@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContractContext } from "../../context/ContractContext";
-import { transferFrom } from "../../utils/functions/contract-functions";
+import {
+  connectToWallet,
+  transferFrom,
+} from "../../utils/functions/contract-functions";
 import { CardStyle } from "./molecules.style";
 
 const assets = {
@@ -20,11 +23,34 @@ const assets = {
 };
 
 function AssetCard({ url, id, cost, owner, style }) {
-  const [isOwner, setIsOwner] = useState(false);
+  const [isOwner, setIsOwner] = useState(true);
   const { contract } = useContext(ContractContext);
 
+  // async function buyAsset() {
+  //   transferFrom(contract, id, owner, cost);
+  // }
+
   async function buyAsset() {
-    transferFrom(contract, id, owner, cost);
+    if (window.connectedToMetaMask)
+      await transferFrom(contract, id, owner, cost);
+    else if (window.ethereum)
+      await connectToWallet()
+        .then(async (e) => {
+          console.log("connected to metamask");
+          window.connectedToMetaMask = true;
+          window.eth_accounts = await window.web3.eth.getAccounts();
+          console.log("ethereum accounts fetched");
+          window.account = window.eth_accounts[0];
+          console.log("current account ", window.account);
+          transferFrom(contract, id, owner, cost);
+        })
+        .catch((e) => {
+          console.log("not conncted ");
+          window.connectedToMetaMask = false;
+        });
+    else {
+      // setShowConnectWalletPanel(true);
+    }
   }
 
   async function checkOwner() {
@@ -38,8 +64,8 @@ function AssetCard({ url, id, cost, owner, style }) {
   }, [contract]);
 
   return (
-    <Link to={`/item/${id}`} style={{ textDecoration: "none", color: "black" }}>
-      <CardStyle style={style}>
+    <CardStyle>
+      <div className="iframe-wrapper">
         <iframe
           title="Postwar City - Exterior Scene 3D model - Sketchfab"
           className="model-viewer"
@@ -52,37 +78,29 @@ function AssetCard({ url, id, cost, owner, style }) {
           web-share="true"
           allowFullScreen=""
         ></iframe>
-        <div className="card-body">
-          <h5 className="card-title">{assets[id].name}</h5>
-          <p>{assets[id].desc}</p>
-          <div className="btn-container">
-            {isOwner ? (
-              <>
-                <button href="#" className="btn btn-primary">
-                  View
-                </button>
-                <span className="you-own">You Own This Asset</span>
-              </>
-            ) : (
-              <div className="buy-container">
-                <button href="#" className="btn btn-primary">
-                  View
-                </button>
-                <button className="btn btn-success" onClick={buyAsset}>
-                  Buy Now
-                </button>
-                <div style={{ marginTop: "10px" }}>
-                  <span className="m-3">Owner : </span>
-                  <span className="m-2" title={owner}>
-                    {owner.substr(0, owner.length / 2) + "..."}
-                  </span>
-                </div>
-              </div>
-            )}
+      </div>
+      <div className="body">
+        <div className="top">
+          <div className="title">{assets[id].name}</div>
+          <div className="buy-btn" onClick={() => buyAsset()}>
+            Buy Now
           </div>
         </div>
-      </CardStyle>
-    </Link>
+        <div className="desc">{assets[id].desc}</div>
+        <Link
+          to={`/item/${id}`}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="view-btn">view</div>
+        </Link>
+        <div className="owner">
+          <span className="title">Owner</span>{" "}
+          <span className="value" title={owner}>
+            {owner.substr(0, owner.length / 1.4) + "..."}
+          </span>
+        </div>
+      </div>
+    </CardStyle>
   );
 }
 

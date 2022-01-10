@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { Appstyle } from "./App.style";
 import WalletAddress from "./components/atoms/WalletAddress";
 import Header from "./components/molecules/Header";
+import Sidebar from "./components/molecules/Sidebar";
 import { ContractContext } from "./context/ContractContext";
 import LandingPage from "./pages/LandingPage";
 import SingleAsset from "./pages/SingleAsset";
@@ -25,14 +26,17 @@ function App(props) {
   return (
     <Appstyle>
       <ContractContext.Provider value={{ contract }}>
-        <Header />
-        <HashRouter>
-          <Routes>
-            <Route exact path="/" element={<LandingPage />} />
-            <Route exact path="/item/:id" element={<SingleAsset />} />
-          </Routes>
-        </HashRouter>
-        <WalletAddress />
+        <Sidebar />
+        <div className="body">
+          <Header />
+          <HashRouter>
+            <Routes>
+              <Route exact path="/" element={<LandingPage />} />
+              <Route exact path="/item/:id" element={<SingleAsset />} />
+            </Routes>
+          </HashRouter>
+          <WalletAddress />
+        </div>
       </ContractContext.Provider>
     </Appstyle>
   );

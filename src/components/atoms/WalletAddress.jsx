@@ -20,7 +20,9 @@ function WalletAddress(props) {
           <span className="address">{address}</span>
         </div>
       ) : (
-        <div className="address">Not Connected to Wallet</div>
+        <div className="address" style={{ opacity: "0.8" }}>
+          Not Connected to Wallet
+        </div>
       )}
     </WalletAddressStyle>
   );

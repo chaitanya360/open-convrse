@@ -1,14 +1,24 @@
 import React from "react";
+import Icon from "../atoms/Icon";
 import { HeaderStyle } from "./molecules.style";
 
 function Header(props) {
   return (
     <HeaderStyle>
-      <img
-        className="converse-logo"
-        src={`${process.env.PUBLIC_URL}/logo512.png`}
-      />
-      <div className="title">Marketspace</div>
+      <div className="left">
+        <div className="logo-wrapper">
+          <img src={`${process.env.PUBLIC_URL}/icons/convrse.svg`} />
+        </div>
+        <div className="title">Marketspace</div>
+        <div className="desc">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
+          aliquid commodi aperiam perferendis dolorum necessitatibus est
+          delectus quod sunt facilis.
+        </div>
+      </div>
+      <div className="right">
+        <Icon name="user" />
+      </div>
     </HeaderStyle>
   );
 }
