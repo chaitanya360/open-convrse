@@ -22,7 +22,7 @@ const assets = {
   },
 };
 
-function AssetCard({ url, id, cost, owner, style }) {
+function AssetCard({ url, id, cost, owner, style, setShowConnectWalletPanel }) {
   const [isOwner, setIsOwner] = useState(true);
   const { contract } = useContext(ContractContext);
 
@@ -49,7 +49,7 @@ function AssetCard({ url, id, cost, owner, style }) {
           window.connectedToMetaMask = false;
         });
     else {
-      // setShowConnectWalletPanel(true);
+      setShowConnectWalletPanel(true);
     }
   }
 

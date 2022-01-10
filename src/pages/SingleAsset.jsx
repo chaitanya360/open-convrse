@@ -37,8 +37,8 @@ const assets = {
 const SVG = () => (
   <svg
     className="etherium-icon"
-    width="33"
-    height="53"
+    width="23"
+    height="33"
     viewBox="0 0 33 53"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -126,17 +126,25 @@ function SingleAsset() {
           <Loading />
         ) : (
           asset && (
-            <>
-              <div className="container">
-                <CardStyle
-                  style={{
-                    height: "fit-content",
-                    display: "flex",
-                    flex: "1",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h5> {assets[assetId].name} - Model</h5>
+            <div className="container">
+              <CardStyle
+                style={{
+                  height: "fit-content",
+                  display: "flex",
+                  flex: "1",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
+              >
+                <div className="iframe-wrapper">
+                  <div
+                    className="body"
+                    style={{ border: "none", padding: "0.5rem 1rem" }}
+                  >
+                    <div className="top">
+                      <div className="title">{assets[assetId].name}</div>
+                    </div>
+                  </div>
                   <iframe
                     title="Postwar City - Exterior Scene 3D model - Sketchfab"
                     className="model-viewer single"
@@ -148,84 +156,127 @@ function SingleAsset() {
                     execution-while-not-rendered="true"
                     web-share="true"
                     allowFullScreen=""
+                    style={{ height: "500px" }}
                   ></iframe>
-                </CardStyle>
+                </div>
 
-                <div>
-                  <CardStyle style={{ height: "fit-content" }}>
+                <div className="body" style={{ marginTop: "12rem" }}>
+                  <div
+                    className="desc"
+                    style={{
+                      fontSize: "1.2rem",
+                      lineHeight: "20px",
+                      paddingLeft: "0.5rem",
+                    }}
+                  >
+                    {assets[assetId].desc}
+                  </div>
+                  <div
+                    className="price-wrapper"
+                    style={{
+                      margin: "1rem 0",
+                      padding: "1rem",
+                      borderRadius: "10px",
+                      backgroundColor: "rgba(255,255,255,0.1)",
+                      width: "fit-content",
+                    }}
+                  >
                     <div className="title">Current Price</div>
-                    <h3 className="price">
+                    <div style={{ marginTop: "1rem" }}>
                       <SVG />
-                      Eth
-                      <span style={{ marginLeft: "1rem" }}>
-                        {asset.cost / 1000000000000000000} ($
-                        {((asset.cost / 1000000000000000000) * 404554).toFixed(
-                          2
-                        )}{" "}
-                        )
-                      </span>
-                    </h3>
-                    {isOwner ? (
-                      <span className="you-own">
-                        You are The Owner of This Asset
-                      </span>
-                    ) : (
-                      <>
-                        <button className="btn btn-success" onClick={buyAsset}>
-                          Buy Now
-                        </button>
+                      <div
+                        style={{ display: "inline-block", fontWeight: "bold" }}
+                      >
+                        <span style={{ marginLeft: "1rem" }}>Eth</span>
+                        <span style={{ marginLeft: "0.5rem" }}>
+                          {asset.cost / 1000000000000000000} ($
+                          {(
+                            (asset.cost / 1000000000000000000) *
+                            404554
+                          ).toFixed(2)}
+                          )
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="top">
+                    <div className="buy-btn" onClick={buyAsset}>
+                      Buy Now
+                    </div>
+                  </div>
+
+                  {isOwner ? (
+                    <span className="you-own">
+                      You are The Owner of This Asset
+                    </span>
+                  ) : (
+                    <>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          flexWrap: "wrap",
+                          paddingTop: "0.4rem",
+                        }}
+                      >
                         <div
+                          className="owner"
                           style={{
+                            margin: "0.5rem 0",
                             display: "flex",
-                            alignItems: "center",
                             flexWrap: "wrap",
-                            paddingTop: "0.4rem",
                           }}
                         >
-                          <span style={{ fontSize: "1.4rem" }}>Owner</span>
-                          <span style={{ margin: "0 1rem" }}>
-                            {" "}
-                            {asset.owner}
+                          <span
+                            className="title"
+                            style={{
+                              fontSize: "1rem",
+                              padding: "0.4rem 0",
+                              marginRight: "1rem",
+                            }}
+                          >
+                            Owner
+                          </span>
+                          <span
+                            className="value"
+                            title={asset.owner}
+                            style={{
+                              fontSize: "1rem",
+                              marginLeft: "0",
+                              padding: "0.4rem 0",
+                            }}
+                          >
+                            {asset.owner.substr(0, asset.owner.length / 1.4) +
+                              "..."}
                           </span>
                         </div>
-                      </>
-                    )}
-                  </CardStyle>
-                  <CardStyle style={{ height: "fit-content" }}>
-                    <div className="title">Description</div>
-                    <h3 className="price">
-                      <span> {assets[assetId].name}</span>
-                    </h3>
-                    <p>{assets[assetId].desc}</p>
-                  </CardStyle>
+                      </div>
+                    </>
+                  )}
+
+                  <h5 style={{ marginTop: "2rem" }}>Virtual Tour</h5>
+                  <iframe
+                    width="100%"
+                    height="640"
+                    style={{
+                      width: "100%",
+                      height: "640px",
+                      border: "none",
+                      maxWidth: " 100%",
+                    }}
+                    frameBorder="0"
+                    allowFullScreen
+                    allow="xr-spatial-tracking; gyroscope; accelerometer"
+                    scrolling="no"
+                    src={tourUrls[assetId]}
+                  ></iframe>
                 </div>
-              </div>
-              <CardStyle
-                style={{
-                  height: "fit-content",
-                  display: "flex",
-                  flex: "1",
-                  flexDirection: "column",
-                }}
-              >
-                <h5>Virtual Tour</h5>
-                <iframe
-                  width="100%"
-                  height="640"
-                  style={{
-                    width: "100%",
-                    height: "640px",
-                    border: "none",
-                    maxWidth: " 100%",
-                  }}
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="xr-spatial-tracking; gyroscope; accelerometer"
-                  scrolling="no"
-                  src={tourUrls[assetId]}
-                ></iframe>
               </CardStyle>
-            </>
+
+              <div>
+                <CardStyle style={{ width: "fit-content" }}></CardStyle>
+              </div>
+            </div>
           )
         )}
       </SingleAssetPageStyle>

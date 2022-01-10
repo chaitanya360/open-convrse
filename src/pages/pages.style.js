@@ -12,10 +12,6 @@ export const LandingPageStyle = styled.section`
 export const SingleAssetPageStyle = styled.section`
   min-height: 100vh;
   .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    flex-wrap: wrap;
-    width: 100%;
   }
 
   @media screen and (max-width: 480px) {
