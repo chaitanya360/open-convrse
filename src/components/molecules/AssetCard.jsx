@@ -91,7 +91,7 @@ function AssetCard({ url, id, cost, owner, style, setShowConnectWalletPanel }) {
           to={`/item/${id}`}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <div className="view-btn">view</div>
+          <div className="view-btn">View</div>
         </Link>
         <div className="owner">
           <span className="title">Owner</span>{" "}

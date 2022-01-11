@@ -20,6 +20,10 @@ export const CardStyle = styled.div`
       border-radius: 12px 12px 0 0;
       width: 100%;
       height: 100%;
+
+      .viewer .watermark a {
+        display: none !important;
+      }
     }
   }
 

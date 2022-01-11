@@ -149,7 +149,8 @@ function SingleAsset() {
                     title="Postwar City - Exterior Scene 3D model - Sketchfab"
                     className="model-viewer single"
                     src={asset.asset_url}
-                    id="api-frame"
+                    // id="api-frame"
+                    id="iframe"
                     allow="autoplay; fullscreen; xr-spatial-tracking"
                     xr-spatial-tracking="true"
                     execution-while-out-of-viewport="true"
