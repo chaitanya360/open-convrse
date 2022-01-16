@@ -61,21 +61,27 @@ export const CardStyle = styled.div`
         align-items: center;
         text-align: center;
         text-transform: uppercase;
-        color: #000000;
-        background: linear-gradient(90deg, #fdfc47 0%, #24fe41 100%);
-        border-radius: 10.1812px;
+        color: #c85151;
+        /* background: linear-gradient(90deg, #fdfc47 0%, #24fe41 100%); */
+        background-color: rgba(255, 255, 255, 0.9);
+        border: 1px solid #f84060;
+        border-radius: 8.1812px;
         padding: 0.3rem 1rem;
+
+        :hover {
+          background-color: rgba(255, 255, 255, 1);
+        }
       }
     }
     .desc {
-      font-weight: normal;
-      font-size: 13.2356px;
-      line-height: 16px;
+      font-weight: 500;
+      font-size: 15.2356px;
+      line-height: 20px;
       letter-spacing: 0.773771px;
 
       color: #ffffff;
 
-      opacity: 0.7;
+      opacity: 0.8;
     }
 
     .view-btn {
