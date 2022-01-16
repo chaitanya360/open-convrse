@@ -4,6 +4,7 @@ import Loading from "../components/atoms/Loading";
 import ConnectWallet from "../components/molecules/ConnectWallet";
 import { CardStyle } from "../components/molecules/molecules.style";
 import { ContractContext } from "../context/ContractContext";
+import { assets } from "../utils/data/assets";
 import {
   connectToWallet,
   fetchContract,
@@ -12,27 +13,6 @@ import {
   transferFromToNew,
 } from "../utils/functions/contract-functions";
 import { SingleAssetPageStyle } from "./pages.style";
-
-const tourUrls = {
-  1: "https://kuula.co/share/collection/7qYhQ?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
-  2: "https://kuula.co/share/collection/7qYhs?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
-  3: "https://kuula.co/share/collection/7qYhb?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
-};
-
-const assets = {
-  1: {
-    name: "Post War City",
-    desc: "A city ruin environment suited to build battle games and experiences. Constructed with a low a poly method with light textures.",
-  },
-  2: {
-    name: "Martial Art House",
-    desc: "A battle ready martial art house made with original chinese bamboo. The space not only offers real like environment to train and battle but can be exported to any Web GL based program as it offers a low poly count with baked texture data.",
-  },
-  3: {
-    name: "Cathedral",
-    desc: "An old cathedral environment suited for RPG and Fantasy experiences. It has defined entries and exits and hidden spaces which can be utilised applying one’s creativity.",
-  },
-};
 
 const SVG = () => (
   <svg
@@ -255,22 +235,26 @@ function SingleAsset() {
                     </>
                   )}
 
-                  <h5 style={{ marginTop: "2rem" }}>Virtual Tour</h5>
-                  <iframe
-                    width="100%"
-                    height="640"
-                    style={{
-                      width: "100%",
-                      height: "640px",
-                      border: "none",
-                      maxWidth: " 100%",
-                    }}
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="xr-spatial-tracking; gyroscope; accelerometer"
-                    scrolling="no"
-                    src={tourUrls[assetId]}
-                  ></iframe>
+                  {assets[assetId].tour && (
+                    <>
+                      <h5 style={{ marginTop: "2rem" }}>Virtual Tour</h5>
+                      <iframe
+                        width="100%"
+                        height="640"
+                        style={{
+                          width: "100%",
+                          height: "640px",
+                          border: "none",
+                          maxWidth: " 100%",
+                        }}
+                        frameBorder="0"
+                        allowFullScreen
+                        allow="xr-spatial-tracking; gyroscope; accelerometer"
+                        scrolling="no"
+                        src={assets[assetId].tour}
+                      ></iframe>
+                    </>
+                  )}
                 </div>
               </CardStyle>
 

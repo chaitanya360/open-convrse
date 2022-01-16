@@ -1,26 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ContractContext } from "../../context/ContractContext";
+import { assets } from "../../utils/data/assets";
 import {
   connectToWallet,
   transferFrom,
 } from "../../utils/functions/contract-functions";
 import { CardStyle } from "./molecules.style";
-
-const assets = {
-  1: {
-    name: "Post War City",
-    desc: "A city ruin environment suited to build battle games and experiences. Constructed with a low a poly method with light textures.",
-  },
-  2: {
-    name: "Martial Art House",
-    desc: "A battle ready martial art house made with original chinese bamboo. The space offers real life environment to battle.",
-  },
-  3: {
-    name: "Cathedral",
-    desc: "An old cathedral environment suited for RPG and Fantasy experiences. It has defined entries and exits and hidden spaces which can be utilised applying one’s creativity.",
-  },
-};
 
 function AssetCard({ url, id, cost, owner, style, setShowConnectWalletPanel }) {
   const [isOwner, setIsOwner] = useState(true);

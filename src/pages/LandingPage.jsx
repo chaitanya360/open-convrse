@@ -28,7 +28,7 @@ function LandingPage(props) {
   useEffect(() => {
     if (contract) {
       fetchAndStoreAssets();
-      console.log(contract);
+      console.log(window.contract);
     }
   }, [contract]);
 
@@ -49,7 +49,6 @@ function LandingPage(props) {
               cost={asset.cost}
               owner={asset.owner}
               url={asset.asset_url}
-              style={{ maxWidth: "400px" }}
               setShowConnectWalletPanel={setShowConnectWalletPanel}
             />
           ))

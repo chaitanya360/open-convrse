@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const LandingPageStyle = styled.section`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  padding: 4rem;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 3rem;
   width: 100%;
   min-height: 100vh;
-  justify-content: space-around;
-  padding-top: 1rem;
+  justify-content: center;
+  @media screen and (max-width: 680px) {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    grid-gap: 0rem;
 `;
 
 export const SingleAssetPageStyle = styled.section`

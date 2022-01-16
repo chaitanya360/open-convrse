@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-  width: 380px;
+  /* width: 380px; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   color: white;
