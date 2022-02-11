@@ -3,6 +3,20 @@ export const assets = {
     name: "CS GO Map",
     desc: "A highly optimized environment from Counter Strike Go Which is readily available to create seamless gaming experiences",
     tour: false,
+    features: [
+      {
+        key: "Triangles",
+        value: "9.9k",
+      },
+      {
+        key: "Vertices",
+        value: "9.6k",
+      },
+      {
+        key: "Size",
+        value: "9mb",
+      },
+    ],
   },
   // 1: {
   //   name: "Post War City",
@@ -13,15 +27,18 @@ export const assets = {
     name: "Martial Art House",
     desc: "A battle ready martial art house made with original chinese bamboo. The space offers real life environment to battle.",
     tour: "https://kuula.co/share/collection/7qYhs?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+    features: [],
   },
   3: {
     name: "Cathedral",
     desc: "An old cathedral environment suited for RPG and Fantasy experiences. It has defined entries and exits and hidden spaces which can be utilised applying one’s creativity.",
     tour: "https://kuula.co/share/collection/7qYhb?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+    features: [],
   },
   4: {
     name: "Ruined factory",
     desc: "An Old, abandoned, ruined factory photogrammetry scan",
     tour: false,
+    features: [],
   },
 };

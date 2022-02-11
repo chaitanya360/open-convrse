@@ -19,6 +19,13 @@ export const SingleAssetPageStyle = styled.section`
   .container {
   }
 
+  table {
+    margin: 1rem 0;
+    td {
+      padding-right: 1rem;
+    }
+  }
+
   @media screen and (max-width: 480px) {
     .container {
       display: flex;

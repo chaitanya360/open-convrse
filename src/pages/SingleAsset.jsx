@@ -151,6 +151,17 @@ function SingleAsset() {
                     }}
                   >
                     {assets[assetId].desc}
+                    {assets[assetId].features.map((feature) => (
+                      <table>
+                        <tr>
+                          <td> {feature.key} :</td>
+                          <td>
+                            {" "}
+                            <b>{feature.value}</b>
+                          </td>
+                        </tr>
+                      </table>
+                    ))}
                   </div>
                   <div
                     className="price-wrapper"
