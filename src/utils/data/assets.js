@@ -1,9 +1,14 @@
 export const assets = {
   1: {
-    name: "Post War City",
-    desc: "A city ruin environment suited to build battle games and experiences. Constructed with a low a poly method with light textures.",
-    tour: "https://kuula.co/share/collection/7qYhQ?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+    name: "CS GO Map",
+    desc: "A highly optimized environment from Counter Strike Go Which is readily available to create seamless gaming experiences",
+    tour: false,
   },
+  // 1: {
+  //   name: "Post War City",
+  //   desc: "A city ruin environment suited to build battle games and experiences. Constructed with a low a poly method with light textures.",
+  //   tour: "https://kuula.co/share/collection/7qYhQ?logo=bWVkaWEvMTE1NjUyLzYxZDYtYWYzNC01NzRlLTAxMTAucG5n&info=0&fs=1&vr=1&sd=1&autorotate=0.47&thumbs=-1",
+  // },
   2: {
     name: "Martial Art House",
     desc: "A battle ready martial art house made with original chinese bamboo. The space offers real life environment to battle.",
