@@ -7,6 +7,7 @@ import Sidebar from "./components/molecules/Sidebar";
 import { ContractContext } from "./context/ContractContext";
 import LandingPage from "./pages/LandingPage";
 import SingleAsset from "./pages/SingleAsset";
+import { assetsDummyContract } from "./utils/data/assets";
 import { abi, address } from "./utils/data/contract-data";
 import { fetchContract, getTokens } from "./utils/functions/contract-functions";
 
@@ -20,7 +21,8 @@ function App(props) {
 
   useEffect(() => {
     // fetchContract().then((_contract) => setContract(_contract));
-    fetchAndStoreContract();
+    // fetchAndStoreContract();
+    setContract(assetsDummyContract);
   }, []);
 
   return (
@@ -28,8 +30,8 @@ function App(props) {
       <ContractContext.Provider value={{ contract }}>
         <Sidebar />
         <div className="body">
-          <Header />
           <HashRouter>
+            <Header />
             <Routes>
               <Route exact path="/" element={<LandingPage />} />
               <Route exact path="/item/:id" element={<SingleAsset />} />

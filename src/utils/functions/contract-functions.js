@@ -49,6 +49,7 @@ export async function getTokens(contract) {
   let tokens = [];
   let totalSupply = await contract.methods.totalSupply().call();
   for (let i = 1; i <= totalSupply; i++) {
+    console.log("fetching token info..." + i);
     let token = await getTokenInfo(i, contract);
     tokens.push(token);
   }
@@ -61,14 +62,13 @@ export async function getTokenOwner(contract, tokenId) {
 }
 
 export async function getEachToken(contract, callback) {
+  console.log("fetching each token ...");
   let totalSupply = await contract.methods
     .totalSupply()
     .call()
     .catch((e) => console.log("error getting total supply", e));
-  for (let i = 1; i <= totalSupply; i++) {
-    let token = await getTokenInfo(i, contract);
-    callback(token);
-  }
+
+  console.log("total supply : ", totalSupply);
 }
 
 export async function transferFrom(contract, tokenId, owner, cost) {

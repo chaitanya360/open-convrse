@@ -4,7 +4,7 @@ import Loading from "../components/atoms/Loading";
 import ConnectWallet from "../components/molecules/ConnectWallet";
 import { CardStyle } from "../components/molecules/molecules.style";
 import { ContractContext } from "../context/ContractContext";
-import { assets } from "../utils/data/assets";
+import { assets, assetsDummyContract } from "../utils/data/assets";
 import {
   connectToWallet,
   fetchContract,
@@ -83,9 +83,14 @@ function SingleAsset() {
   }
 
   async function fetchAndSetAsset() {
-    let token = await getTokenInfo(assetId, contract);
-    if (token.owner === window.account) setIsOwner(true);
-    setAsset(token);
+    // let token = await getTokenInfo(assetId, contract);
+    // if (token.owner === window.account) setIsOwner(true);
+    // setAsset(token);
+    // setLoading(false);
+
+    setAsset(
+      assetsDummyContract.find((asset) => asset.id === parseInt(assetId))
+    );
     setLoading(false);
   }
 
@@ -106,7 +111,7 @@ function SingleAsset() {
           <Loading />
         ) : (
           asset && (
-            <div className="container">
+            <div className="container" id="/">
               <CardStyle
                 style={{
                   height: "fit-content",
